@@ -20,7 +20,7 @@ macro_rules! run_bench {
                 let iterations = readers_dist[d];
                 handles.push(rt.spawn(async move {
                     for _ in 0..iterations {
-                        check_value(black_box(rx.recv().await.unwrap()));
+                        check_value(std::hint::black_box(rx.recv().await.unwrap()));
                     }
                 }));
             }

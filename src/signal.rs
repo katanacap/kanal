@@ -320,7 +320,8 @@ impl<T> SignalTerminator<T> {
 
 impl<T> PartialEq<Signal<T>> for SignalTerminator<T> {
     fn eq(&self, other: &Signal<T>) -> bool {
-        self.0 == other as *const Signal<T>
+        // self.0 == other as *const Signal<T>
+        std::ptr::eq(self.0, other)
     }
 }
 
